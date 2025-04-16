@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found | 404</title>
+    <style>
+        :root {
+            --bg-color: #f8f9fa;
+            --text-color: #212529;
+            --primary-color: #4361ee;
+            --secondary-color: #3a0ca3;
+            --card-bg: #ffffff;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-color: #121212;
+                --text-color: #f8f9fa;
+                --primary-color: #4895ef;
+                --secondary-color: #4361ee;
+                --card-bg: #1e1e1e;
+                --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .error-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 3rem 2rem;
+            box-shadow: var(--shadow);
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 6rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            line-height: 1;
+        }
+
+        h2 {
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        p {
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        .astro-helmet {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 2rem;
+            position: relative;
+        }
+
+        .helmet {
+            position: relative;
+            width: 80px;
+            height: 80px;
+            background-color: var(--card-bg);
+            border-radius: 50%;
+            border: 4px solid var(--primary-color);
+            margin: 0 auto;
+        }
+
+        .visor {
+            position: absolute;
+            width: 60px;
+            height: 30px;
+            background-color: rgba(67, 97, 238, 0.2);
+            border-radius: 30px 30px 0 0;
+            top: 25px;
+            left: 10px;
+            border: 2px solid var(--primary-color);
+        }
+
+        .reflection {
+            position: absolute;
+            width: 20px;
+            height: 10px;
+            background-color: rgba(255, 255, 255, 0.4);
+            border-radius: 5px;
+            top: 15px;
+            left: 15px;
+            transform: rotate(20deg);
+        }
+
+        .stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        .star {
+            position: absolute;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 4rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            .error-card {
+                padding: 2rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="error-card">
+            <div class="astro-helmet">
+                <div class="stars">
+                    <div class="star" style="width: 2px; height: 2px; top: 20%; left: 30%;"></div>
+                    <div class="star" style="width: 3px; height: 3px; top: 40%; left: 70%;"></div>
+                    <div class="star" style="width: 2px; height: 2px; top: 70%; left: 20%;"></div>
+                    <div class="star" style="width: 2px; height: 2px; top: 80%; left: 60%;"></div>
+                </div>
+                <div class="helmet">
+                    <div class="visor"></div>
+                    <div class="reflection"></div>
+                </div>
+            </div>
+            <h1>404</h1>
+            <h2>Lost in Space</h2>
+            <p>The page you're looking for has drifted out of orbit. Let's get you back to safety.</p>
+            <a href="/" class="btn">Beam Me Home</a>
+        </div>
+    </div>
+
+    <script>
+        // Optional: Add toggle for manual dark/light mode control
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add more random stars
+            const starsContainer = document.querySelector('.stars');
+            for (let i = 0; i < 10; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.width = `${Math.random() * 3 + 1}px`;
+                star.style.height = star.style.width;
+                star.style.top = `${Math.random() * 100}%`;
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.opacity = Math.random() * 0.5 + 0.5;
+                starsContainer.appendChild(star);
+            }
+            
+            // Check for saved theme preference or use system preference
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                document.documentElement.setAttribute('data-theme', savedTheme);
+            }
+        });
+
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        }
+    </script>
+</body>
+</html>
